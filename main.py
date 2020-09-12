@@ -2,7 +2,7 @@ from password import generate_password
 
 fo = open("passwords.txt", "a+")
 
-website_name = input("What website are you trying to login to?\n").lower()
+website_name = input("What website are you trying to login to?\n").lower().replace(" ", "")
 
 # Sets file pointer to the beginning and checks to see if the website exists in the text file
 fo.seek(0, 0)
