@@ -1,7 +1,7 @@
-from password import generate_password
+import password
 
-fo = open("passwords.txt", "a+")
-
+fo = open("passwords1.txt", "r+")
+lines = fo.readlines()
 website_name = input("What website are you trying to login to?\n").lower().replace(" ", "")
 
 # Sets file pointer to the beginning and checks to see if the website exists in the text file
@@ -12,14 +12,13 @@ for i in fo.readlines():
         website_exists = True
 
 if not website_exists:
-    password_length = input("How long would you like the password to be?\n")
-    new_password = generate_password(password_length)
-    fo.write(website_name + " " + new_password + "\n")
-    print("Your new password for " + website_name + " is: " + new_password)
+    print(password.add_password(lines, website_name, fo))
 else:
-    fo.seek(0, 0)
-    for i in fo.readlines():
-        if website_name in i:
-            print("Your password for " + i.split()[0] + " is: " + i.split()[1])
+    print(password.find_password(lines, website_name))
 
-fo.close();
+    answer = input("Would you like to change your password? [y/n]\n")
+
+    if answer == "y":
+        print(password.change_password(lines, website_name, fo))
+
+fo.close()
