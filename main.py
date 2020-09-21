@@ -7,7 +7,7 @@ website_name = input("What website are you trying to login to?\n").lower().repla
 # Sets file pointer to the beginning and checks to see if the website exists in the text file
 fo.seek(0, 0)
 website_exists = False
-for i in fo.readlines():
+for i in lines:
     if website_name in i:
         website_exists = True
 
