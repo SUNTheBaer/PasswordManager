@@ -15,8 +15,8 @@ def generate_password(length) -> str:
 def add_password(lines: list, website_name: str, fo) -> str:
     password_length = input("How long would you like the password to be?\n")
     new_password = generate_password(password_length)
-    # for i in lines:
-    #     fo.write(i)
+    for i in lines:
+        fo.write(i)
     fo.write(website_name + " " + new_password + "\n")
     return "Your new password for " + website_name + " is: " + new_password
 
